@@ -39,4 +39,4 @@ parallelized in order not to overwhelm the servers. It takes approximately 5 min
 ## Image credit
 
 Courtesy of NASA/SDO and the AIA, EVE, and HMI science teams.
-![20230101_000629_4096_0193.jpg](sdo_images%2F20230101_000629_4096_0193.jpg)
+![20230101_000629_4096_0193.jpg](sdo_images/20230101_000629_4096_0193.jpg)
