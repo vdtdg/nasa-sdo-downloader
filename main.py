@@ -16,6 +16,10 @@ def download_sdo_images(path, start_date, end_date, resolution, channels):
     end = datetime.strptime(end_date, "%Y-%m-%d")
     date = start
 
+    delta = end - start
+    if delta.days < 0:
+        raise Exception("End Date must be after Start Date.")
+
     failures = []
     while date <= end:
         print(f"Downloading data for {date.strftime('%Y-%m-%d')}")
