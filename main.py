@@ -53,13 +53,12 @@ def download_sdo_images(path, start_date, end_date, resolution, channels):
 
 if __name__ == '__main__':
     # Change these settings
-    path = "sdo_images"
-    start_date = "2023-01-01"
-    end_date = "2023-01-02"
-    # Available resolutions: 4096 2048 1024 512
-    resolution = "4096"
-    # Available channels: 0094 0131 0171 0193 0211 0304 0335 1600 1700 HMIB HMII HMID HMIBC HMIIF HMIIC
-    channels = ["0094", "0131", "0171", "0193", "0211", "0304", "0335", "1600", "1700", "HMIB", "HMII", "HMID", "HMIBC",
-                "HMIIF", "HMIIC"]
+    path = os.environ.get('SDO_IMAGE_DIRECTORY', 'sdo_images/')
+    start_date = os.environ.get('SDO_START_DATE', '2023-01-13')
+    end_date = os.environ.get('SDO_END_DATE', '2023-01-14')
+    resolution = os.environ.get('SDO_RESOLUTION', '4096')
+    channels = os.environ.get('SDO_CHANNELS', '0094,0193')
+
+    channels = [channel.strip() for channel in channels.split(',')]
 
     download_sdo_images(path, start_date, end_date, resolution, channels)
