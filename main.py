@@ -4,6 +4,7 @@ from datetime import datetime, timedelta
 
 import requests
 from bs4 import BeautifulSoup
+from tqdm import tqdm
 
 
 def download_sdo_images(path, start_date, end_date, resolution, channels):
@@ -17,6 +18,7 @@ def download_sdo_images(path, start_date, end_date, resolution, channels):
 
     failures = []
     while date <= end:
+        print(f"Downloading data for {date.strftime('%Y-%m-%d')}")
         year = date.strftime("%Y")
         month = date.strftime("%m")
         day = date.strftime("%d")
@@ -33,15 +35,13 @@ def download_sdo_images(path, start_date, end_date, resolution, channels):
             links = list(filter(lambda a: image_pattern.match(a), all_links))
 
             # Download each image
-            for link in links:
+            for link in tqdm(links):
                 image_url = f"https://sdo.gsfc.nasa.gov/assets/img/browse/{year}/{month}/{day}/{link}"
                 img_response = requests.get(image_url)
                 if img_response.status_code == 200:
                     with open(f'{path}/{link}', 'wb') as f:
                         f.write(img_response.content)
-                    print(f"Downloaded {link}")
                 else:
-                    print(f"Failed to download {link}")
                     failures.append(link)
         else:
             print(f"Failed to retrieve image listing for {date.strftime('%Y-%m-%d')}")

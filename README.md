@@ -34,7 +34,7 @@ You don't have to set all the environment variables, as they have default values
 /!\ Make sure you have enough space disk before running the script. There are **a lot** of **heavy** images.
 
 Also, as there are a lot of images, it might take a long time to download a large range of images. Image download is not
-parallelized in order not to overwhelm the servers.
+parallelized in order not to overwhelm the servers. It takes approximately 5 minutes to download a full day of image, for one resolution and one channel.
 
 ## Image credit
 
