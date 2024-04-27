@@ -37,7 +37,7 @@ def download_sdo_images(path, start_date, end_date, resolution, channels):
                 image_url = f"https://sdo.gsfc.nasa.gov/assets/img/browse/{year}/{month}/{day}/{link}"
                 img_response = requests.get(image_url)
                 if img_response.status_code == 200:
-                    with open(f'sdo_images/{link}', 'wb') as f:
+                    with open(f'{path}/{link}', 'wb') as f:
                         f.write(img_response.content)
                     print(f"Downloaded {link}")
                 else:
