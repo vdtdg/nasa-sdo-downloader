@@ -52,7 +52,7 @@ def download_sdo_images(path, start_date, end_date, resolution, channels):
 
         # Increment the date by one day
         date += timedelta(days=1)
-    print(f"Found {len(failures)}: {failures}")
+    print(f"Found {len(failures)} errors: {failures}")
 
 
 if __name__ == '__main__':
