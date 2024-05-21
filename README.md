@@ -36,6 +36,14 @@ You don't have to set all the environment variables, as they have default values
 Also, as there are a lot of images, it might take a long time to download a large range of images. Image download is not
 parallelized in order not to overwhelm the servers. It takes approximately 5 minutes to download a full day of image, for one resolution and one channel.
 
+## Build a video out of the images
+Using a command like 
+```
+ffmpeg -framerate 30 -pattern_type glob -i 'path-to-the-images/*.jpg' -c:v libx264 -preset slow -crf 18 -pix_fmt yuv420p -movflags +faststart path-to-the-images/output.mp4
+```
+will generate a video from the images in the specified folder.
+
+
 ## Image credit
 
 Courtesy of NASA/SDO and the AIA, EVE, and HMI science teams.
